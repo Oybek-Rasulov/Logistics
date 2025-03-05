@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --light-color: #fff;
+    --main-color: #2F4F65; 
+    --dark-color: #333;
+}
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", serif;
+
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.icon {
+    width: 25px;
+    margin-right: 1rem;
+}
+
+.logo {
+    width: 100px;
+}
+
+.second-title {
+    font-size: 0.8rem;
+}
+
+.link {
+    color: var(--dark-color);
+}
+
+.active {
+    text-decoration: underline;
+}
+
+/* Navbar section */
+.navbar {
+    background-color: var(--light-color);
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid var(--dark-color); */
+}
+
+.navbar-main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    margin-right: 3rem;
+    color: var(--dark-color);
+}
+
+/* Header section */
+.header {
+    /* position: relative; */
+    width: 100vw;
+    height: 90vh;
+    /* background-color: aqua; */
+    background-image: url('./assets/images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.menu {
+    /* position: fixed; */
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(181, 187, 222, 0.6);
+    padding: 1rem 5rem;
+}
+
+.menu ul {
+    display: flex;
+}
+
+.menu ul li a { 
+    color: #fff;
+    margin-right: 2rem;
+    font-size: 0.9rem;
+
+}
+
+/* Header section */
+.header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 5rem;
+    width: 700px;
+}
+
+.header-box {
+    width: 300px;
+    background-color: #203849;
+    padding: 1rem;
+    font-size: 0.8rem;
+    border-left: 1rem solid #fff;
+    margin-bottom: 2rem;
+}
+
+.title-content {
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
