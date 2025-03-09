@@ -1,7 +1,7 @@
 import assets from '../assets';
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 export default function Header() {
-    return <div className="header">
+    return <div className="header mb3">
         <div className="menu">
             <ul>
                 <li><NavLink to='/'>Home</NavLink></li>
