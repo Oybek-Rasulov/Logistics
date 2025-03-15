@@ -1,7 +1,7 @@
 import assets from '../assets';
 import { NavLink } from 'react-router-dom'
-export default function Header() {
-    return <div className="header mb3">
+export default function Header({id, title, text}) {
+    return <div className="header mb3" id={id} >
         <div className="menu">
             <ul>
                 <li><NavLink to='/'>Home</NavLink></li>
@@ -20,8 +20,8 @@ export default function Header() {
         </div>
 
         <div className='header-content'>
-            <div className='header-box'>Logistics & Supply Chain Solutions</div>
-            <p className='title-content'>AS Cargo LLC corporation is a transportation company that was established in Naperville, IL in 2018. Our company acknowledges the strong potential of the trucking industry to make a big impact on business and society. Our management team with 15 years of transportation experience and professional drivers work to meet your needs and provide excellent customer service.</p>
+            <div className='header-box'>{title}</div>
+            <p className='title-content'> {text}</p>
         </div>
 
     </div>

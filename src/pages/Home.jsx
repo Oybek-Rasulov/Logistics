@@ -5,18 +5,27 @@ import Safe from '../components/Home/Safe';
 import Transportation from '../components/Home/Transportation';
 import Opportunity from '../components/Home/Opportunity';
 import Contact from '../components/Home/Contact';
+import Cards from '../components/ReusableComp/Cards';
+import Clients from '../components/ReusableComp/Clients';
+import Cargo from '../components/ReusableComp/Cargo';
+import Footer from '../components/ReusableComp/Footer';
 
 
 export default function Home() {
     return <>
         <Navbar />
-        <Header />
+        <Header id="home" title="Logistics & Supply Chain Solutions" text="AS Cargo LLC corporation is a transportation company that was established in Naperville, IL in 2018. Our company acknowledges the strong potential of the trucking industry to make a big impact on business and society. Our management team with 15 years of transportation experience and professional drivers work to meet your needs and provide excellent customer service." />
         <Title title="Safe and Reliable Cargo Solutions:" />
         <Safe />
         <Title title="Transportation Across The USA" />
         <Transportation />
         <Opportunity />
         <Contact />
-
+        <div className='card-container'>
+            <Cards />
+        </div>
+        <Clients />
+        <Cargo />
+        <Footer />
     </>
 } 
