@@ -19,6 +19,8 @@ import DispatchOne from "../assets/images/DispatchOne.png";
 import DispatchTwo from "../assets/images/DispatchTwo.png";
 import DispatchThree from "../assets/images/DispatchThree.png";
 import DispatchFour from "../assets/images/DispatchFour.png";
+import faq from "../assets/images/faq.png";   
+import apply from "../assets/images/apply.png";   
 
 // icons
 import clock from "../assets/icons/clock.png";
@@ -96,6 +98,8 @@ const assets = {
     DispatchTwo,
     DispatchThree,
     DispatchFour,
+    faq,
+    apply,
     
 }
 

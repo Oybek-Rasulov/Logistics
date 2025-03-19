@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../components/ReusableComp/Navbar'
 import Header from '../components/Home/Header'
 import WhoWeAre from '../components/About/WhoWeAre'

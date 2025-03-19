@@ -42,12 +42,12 @@ export default function Home() {
                 {/* Middle Section - Pages */}
                 <div className="footer-middle">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contacts</a></li>
-                    <li><a href="#">Apply Now</a></li>
-                    <li><a href="#">Set Up</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contacts</a></li>
+                    <li><a href="/apply">Apply Now</a></li>
+                    <li><a href="/setup">Set Up</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
                 </ul>
                 </div>
 
