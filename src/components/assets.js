@@ -21,6 +21,7 @@ import DispatchThree from "../assets/images/DispatchThree.png";
 import DispatchFour from "../assets/images/DispatchFour.png";
 import faq from "../assets/images/faq.png";   
 import apply from "../assets/images/apply.png";   
+import setup from "../assets/images/setup.png";   
 
 // icons
 import clock from "../assets/icons/clock.png";
@@ -100,6 +101,7 @@ const assets = {
     DispatchFour,
     faq,
     apply,
+    setup,
     
 }
 

@@ -73,6 +73,27 @@ a {
     padding: 1rem 12rem;
 }
 
+
+#contact .header-content,
+#policy .header-content,
+#setup .header-content, 
+#apply .header-content, 
+#about .header-content {
+  padding: 5rem;
+  justify-content: start;
+  font-size: 2rem;
+}
+
+#contact .header-box,
+#policy .header-box,
+#setup .header-box, 
+#apply .header-box, 
+#about .header-box {
+  background-color: #1556A080;
+  text-align: center;
+  width: 200px;
+}
+
 /* .container2 {
     padding: 1rem 16rem;
 } */
@@ -162,7 +183,7 @@ a {
 .header-box {
     width: 300px;
     background-color: var(--submit-btn);
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     font-size: 0.8rem;
     border-left: 1rem solid #D9D9D9;
     color: var(--light-color);
@@ -872,8 +893,12 @@ a {
 
   /* Contact */
   #contact {
-    height: 60vh;
     background-image: url("/src/assets/images/backgroundThree.png");
+    width: 99vw;  
+    height: 70vh; 
+    background-size: cover;  
+    background-position: center; 
+    background-repeat: no-repeat;
   }
 
   .contact-main {
@@ -1022,12 +1047,14 @@ a {
     background-color: #2C3E50;
     color: white;
     padding: 2rem;
-    /* margin-top: 6rem; */
-    /* margin-left: -15rem; */
     top: 8rem;
     left: -5rem;
     text-align: center;
     z-index: 1;
+  }
+
+  .consultation-box h3 {
+    text-align: start;
   }
   
   .tag {
@@ -1092,6 +1119,11 @@ a {
   /* Apply section */
   #apply {
     background-image: url("./assets/images/backgroundFour.png");
+    width: 99vw;  
+    height: 70vh; 
+    background-size: cover;  
+    background-position: center; 
+    background-repeat: no-repeat;
   }
 
   /* Container */
@@ -1118,6 +1150,9 @@ a {
 
 /* Header */
 .form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -1185,8 +1220,103 @@ textarea {
   margin-top: 5px;
 }
 
+/* Setup page */
+#setup {
+  background-image: url("/src/assets/images/backgroundFive.png");
+  width: 99vw;  
+  height: 55vh; 
+  background-size: cover;  
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
 
+/* Form */
+.input-group input, textarea,
+.set-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  border: 1px solid var(--light-color);
+  background: var(--main-color);
+  color: white;
+}
+
+input::placeholder {
+  color: #fff;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.input-group input {
+  width: 50%;
+}
+
+/* Policy Part */
   
+#policy {
+  background-image: url("./assets/images/backgroundSix.png");
+  width: 99vw;  
+  height: 70vh; 
+  background-size: cover;  
+  background-position: center; 
+  background-repeat: no-repeat;
+}
+
+.privacy-container {
+  margin: 40px auto;
+  background-color: white;
+}
+
+.privacy-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.privacy-badge {
+  background: #0d1b2a;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.privacy-container h2 {
+  font-size: 24px;
+  color: #1e3a52;
+}
+
+.privacy-container h3 {
+  font-size: 18px;
+  margin-top: 20px;
+  color: #1e3a52;
+}
+
+.privacy-container p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.privacy-container ul {
+  padding-left: 20px;
+}
+
+.privacy-container ul li {
+  color: #555;
+  margin-bottom: 5px;
+}
+
 
   
 
