@@ -1,4 +1,4 @@
-import assets from "../assets";
+import { Link } from "react-router-dom";
 import FooterHead from "./FooterHead";
 
 export default function Home() {
@@ -35,19 +35,19 @@ export default function Home() {
                 <div className="contact-info">
                     <p>📞 630-686-6569</p>
                     <p>📍 800 W 5th Ave #209, Naperville, IL 60563</p>
-                    <p>📧 <a href="mailto:DISPATCH@ASCARGOLLC.COM">DISPATCH@ASCARGOLLC.COM</a></p>
+                    <p>📧 <Link href="mailto:DISPATCH@ASCARGOLLC.COM">DISPATCH@ASCARGOLLC.COM</Link></p>
                 </div>
                 </div>
 
                 {/* Middle Section - Pages */}
                 <div className="footer-middle">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="about">About Us</a></li>
-                    <li><a href="contact">Contacts</a></li>
-                    <li><a href="apply">Apply Now</a></li>
-                    <li><a href="setup">Set Up</a></li>
-                    <li><a href="privacy">Privacy Policy</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/contact">Contacts</Link></li>
+                    <li><Link to="/apply">Apply Now</Link></li>
+                    <li><Link to="/setup">Set Up</Link></li>
+                    <li><Link to="/policy">Privacy Policy</Link></li>
                 </ul>
                 </div>
 

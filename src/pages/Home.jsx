@@ -9,9 +9,14 @@ import Cards from '../components/ReusableComp/Cards';
 import Clients from '../components/ReusableComp/Clients';
 import Cargo from '../components/ReusableComp/Cargo';
 import Footer from '../components/ReusableComp/Footer';
+import { useEffect } from 'react';
 
 
 export default function Home() {
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to top when the component mounts
+      }, []);
+      
     return <>
         <Navbar />
         <Header id="home" title="Logistics & Supply Chain Solutions" text="AS Cargo LLC corporation is a transportation company that was established in Naperville, IL in 2018. Our company acknowledges the strong potential of the trucking industry to make a big impact on business and society. Our management team with 15 years of transportation experience and professional drivers work to meet your needs and provide excellent customer service." />
