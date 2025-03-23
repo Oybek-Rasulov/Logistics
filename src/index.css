@@ -1317,6 +1317,12 @@ input::placeholder {
   margin-bottom: 5px;
 }
 
+/* videos */
+.videos {
+  display: flex;
+  justify-content: space-between;
+}
+
 
   
 

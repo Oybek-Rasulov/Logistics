@@ -2,6 +2,7 @@ import Navbar from '../components/ReusableComp/Navbar'
 import Header from '../components/Home/Header'
 import ApplyForm from '../components/Apply/ApllyForm'
 import ApplyQuestions from "../components/Apply/ApplyQuestions"
+import TrainingVideos from '../components/Apply/TrainingVideos'
 import Footer from '../components/ReusableComp/Footer'
 import { useEffect } from 'react'
 
@@ -16,6 +17,7 @@ export default function Apply() {
             <Navbar />
             <Header id="apply" title="Apply Now" text="Apply Now & Work with Us!" /> 
             <ApplyForm />
+            <TrainingVideos />
             <ApplyQuestions />
             <Footer />
         </>
