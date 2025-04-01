@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import Apply from "./pages/Apply";
 import Setup from "./pages/Setup";
 import Policy from "./pages/Policy";
+import SignIn from "./pages/SignIn";
 
 export default function App() {
   return <BrowserRouter>
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/apply" element={<Apply />} />
       <Route path="/setup" element={<Setup />} />
       <Route path="/policy" element={<Policy />} />
+      <Route path="/signin" element={<SignIn />} />
       {/* <Route path="*" element={<NotFound />} /> */}
     </Routes>
   </BrowserRouter>

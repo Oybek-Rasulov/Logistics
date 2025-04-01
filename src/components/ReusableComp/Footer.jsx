@@ -55,7 +55,7 @@ export default function Home() {
                 <div className="footer-right">
                 <p className="mb2">Be the first to know about our latest updates, special offers, and exclusive content. Subscribe now to stay connected and never miss out on anything exciting!</p>
                 <input type="email" placeholder="Your Email*" className="newsletter-input" />
-                <button className="sign-in-btn">Sign In / Log In</button>
+                <Link to="/signin" className="sign-in-btn">Sign In / Log In</Link>
                 </div>
             </div>
 
