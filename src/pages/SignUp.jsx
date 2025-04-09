@@ -7,18 +7,20 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
+
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from '../components/User/CustomIcons';
 
+// 👉 Import Firebase
 import {
   auth,
-  googleProvider,
   facebookProvider,
+  googleProvider,
   signInWithPopup,
-  FacebookAuthProvider,
-  fetchSignInMethodsForEmail
-} from '../firebase/firebase';
+  fetchSignInMethodsForEmail,
+  FacebookAuthProvider
+} from '../firebase/firebase.js';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -28,18 +30,18 @@ const Card = styled(MuiCard)(({ theme }) => ({
   padding: theme.spacing(4),
   gap: theme.spacing(2),
   margin: 'auto',
-  [theme.breakpoints.up('sm')]: {
-    maxWidth: '450px',
-  },
   boxShadow:
     'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
+  [theme.breakpoints.up('sm')]: {
+    width: '450px',
+  },
   ...theme.applyStyles('dark', {
     boxShadow:
       'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
   }),
 }));
 
-const SignInContainer = styled(Stack)(({ theme }) => ({
+const SignUpContainer = styled(Stack)(({ theme }) => ({
   height: 'calc((1 - var(--template-frame-height, 0)) * 100dvh)',
   minHeight: '100%',
   padding: theme.spacing(2),
@@ -57,116 +59,124 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
     backgroundRepeat: 'no-repeat',
     ...theme.applyStyles('dark', {
       backgroundImage:
-        'radial-gradient(at 50% 50%, hsla(207, 37%, 29%, 1), hsl(220, 30%, 5%))',
+      'radial-gradient(at 50% 50%, hsla(207, 37%, 29%, 1), hsl(220, 30%, 5%))',
     }),
   },
 }));
 
-export default function SignIn(props) {
-  const handleGoogleLogin = async () => {
+export default function SignUp(props) {
+  // 👉 Google Sign Up
+  const handleGoogleSignup = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const token = await result.user.getIdToken();
-      console.log('✅ Google User:', result.user);
+      console.log('Google user:', result.user);
+      console.log('ID Token:', token);
 
-      // Optional: send token to backend
+      // Send token to backend
       await fetch('http://localhost:3001/api/auth/firebase-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
       });
 
+      // Optional: redirect or notify
     } catch (error) {
-      console.error('❌ Google Sign-In Error:', error);
+      console.error('Google Sign Up Error:', error);
     }
   };
 
-  const handleFacebookLogin = async () => {
+  // 👉 Facebook Sign Up
+  const handleFacebookSignup = async () => {
     try {
       const result = await signInWithPopup(auth, facebookProvider);
       const token = await result.user.getIdToken();
-      console.log('✅ Facebook User:', result.user);
-
-      // Optional: send token to backend
+  
+      console.log('✅ Facebook user:', result.user);
+      console.log('🔑 ID Token:', token);
+  
+      // Optional: send token to your backend
       await fetch('http://localhost:3001/api/auth/firebase-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
       });
-
+  
+      // ✅ Show success or redirect here if needed
     } catch (error) {
       if (error.code === 'auth/account-exists-with-different-credential') {
+        console.warn('⚠️ Account already exists with different provider');
+  
+        // Get the pending Facebook credentials
         const pendingCred = FacebookAuthProvider.credentialFromError(error);
         const email = error.customData?.email;
-
+  
         try {
-          if (!email) {
-            alert('⚠️ Unable to detect email. Please try another login method.');
-            return;
-          }
-          
+          // Find what provider the user originally signed up with
           const methods = await fetchSignInMethodsForEmail(auth, email);
-
-          console.log('✅ Sign-in methods:', methods);
-          
-          if (methods.length === 0) {
-            alert('⚠️ This email exists but has no linked login method.');
-          } else if (methods.includes('google.com')) {
-            alert('⚠️ This email is already linked with Google. Please sign in using Google.');
+  
+          if (methods.includes('google.com')) {
+            alert(`⚠️ This email is already linked with Google.\nPlease sign in with Google first to link your Facebook account.`);
+            // Optional: Automatically trigger Google login here if you want
+          } else if (methods.includes('password')) {
+            alert(`⚠️ This email is already linked with Email/Password.\nPlease log in using your password first.`);
           } else {
-            alert(`⚠️ This email is already linked with: ${methods[0]}`);
+            alert(`⚠️ This account is already linked with, Try to log in`);
           }
-            
+  
         } catch (lookupError) {
           console.error('❌ Failed to fetch sign-in methods:', lookupError);
+          alert('Something went wrong while resolving account conflict.');
         }
+  
       } else {
-        console.error('❌ Facebook Sign-In Error:', error);
+        console.error('❌ Facebook Sign Up Error:', error);
       }
     }
   };
+  
 
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
-      <SignInContainer direction="column" justifyContent="space-between">
+      <SignUpContainer direction="column" justifyContent="space-between">
         <Card variant="outlined">
           <Typography
             component="h1"
             variant="h4"
             sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
           >
-            Sign In
+            Sign up
           </Typography>
 
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Button
               fullWidth
               variant="outlined"
-              onClick={handleGoogleLogin}
+              onClick={handleGoogleSignup}
               startIcon={<GoogleIcon />}
             >
-              Sign in with Google
+              Sign up with Google
             </Button>
 
             <Button
               fullWidth
               variant="outlined"
-              onClick={handleFacebookLogin}
+              onClick={handleFacebookSignup}
               startIcon={<FacebookIcon />}
             >
-              Sign in with Facebook
+              Sign up with Facebook
             </Button>
 
             <Typography sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
-              <Link href="/signup" variant="body2" sx={{ alignSelf: 'center' }}>
-                Sign up
+              Already have an account?{' '}
+              <Link href="/signin" variant="body2" sx={{ alignSelf: 'center' }}>
+                Sign in
               </Link>
             </Typography>
           </Box>
         </Card>
-      </SignInContainer>
+      </SignUpContainer>
     </AppTheme>
   );
 }

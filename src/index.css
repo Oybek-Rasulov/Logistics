@@ -73,6 +73,10 @@ a {
     padding: 1rem 12rem;
 }
 
+.w80 {
+  width: 80vw;
+}
+
 
 #contact .header-content,
 #policy .header-content,
