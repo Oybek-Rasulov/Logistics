@@ -48,6 +48,7 @@ export default function Home() {
                     <li><Link to="/apply">Apply Now</Link></li>
                     <li><Link to="/setup">Set Up</Link></li>
                     <li><Link to="/policy">Privacy Policy</Link></li>
+                    <li><Link to="/admin">Privacy Policy</Link></li>
                 </ul>
                 </div>
 
