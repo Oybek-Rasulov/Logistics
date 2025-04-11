@@ -9,12 +9,12 @@ import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { PageContainer } from '@toolpad/core/PageContainer';
 import Grid from '@mui/material/Grid';
-import Dashboard from '../components/admin/Dashboard';
-import Users from '../components/admin/Users';
-import Charts from '../components/admin/Charts';
-import AdminChatPanel from '../components/admin/AdminChatPanel';
+import Dashboard from '../components/Admin/Dashboard';
+import Users from '../components/Admin/Users';
+import Charts from '../components/Admin/Charts';
+import AdminChatPanel from '../components/Admin/AdminChatPanel';
 import { useState, useEffect } from "react";
-import Drivers from '../components/admin/Drivers';
+import Drivers from '../components/Admin/Drivers';
 
 const NAVIGATION = [
   {
