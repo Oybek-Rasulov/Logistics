@@ -14,7 +14,7 @@ import Users from '../components/admin/Users';
 import Charts from '../components/admin/Charts';
 import AdminChatPanel from '../components/admin/AdminChatPanel';
 import { useState, useEffect } from "react";
-import Drivers from '../components/Admin/Drivers';
+import Drivers from '../components/admin/Drivers';
 
 const NAVIGATION = [
   {
