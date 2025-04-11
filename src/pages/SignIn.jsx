@@ -67,64 +67,46 @@ export default function SignIn(props) {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const token = await result.user.getIdToken();
-      console.log('✅ Google User:', result.user);
-
-      // Optional: send token to backend
-      await fetch('http://localhost:3001/api/auth/firebase-login', {
+  
+      const res = await fetch('http://localhost:3001/api/auth/firebase-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
       });
-
+  
+      const data = await res.json();
+  
+      if (data?.user) {
+        localStorage.setItem('user', JSON.stringify(data.user)); // ✅ Save user details (including userid)
+        window.location.href = '/'; // ✅ Redirect to homepage after login
+      }
     } catch (error) {
       console.error('❌ Google Sign-In Error:', error);
     }
   };
-
+  
   const handleFacebookLogin = async () => {
     try {
       const result = await signInWithPopup(auth, facebookProvider);
       const token = await result.user.getIdToken();
-      console.log('✅ Facebook User:', result.user);
-
-      // Optional: send token to backend
-      await fetch('http://localhost:3001/api/auth/firebase-login', {
+  
+      const res = await fetch('http://localhost:3001/api/auth/firebase-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
       });
-
-    } catch (error) {
-      if (error.code === 'auth/account-exists-with-different-credential') {
-        const pendingCred = FacebookAuthProvider.credentialFromError(error);
-        const email = error.customData?.email;
-
-        try {
-          if (!email) {
-            alert('⚠️ Unable to detect email. Please try another login method.');
-            return;
-          }
-          
-          const methods = await fetchSignInMethodsForEmail(auth, email);
-
-          console.log('✅ Sign-in methods:', methods);
-          
-          if (methods.length === 0) {
-            alert('⚠️ This email exists but has no linked login method.');
-          } else if (methods.includes('google.com')) {
-            alert('⚠️ This email is already linked with Google. Please sign in using Google.');
-          } else {
-            alert(`⚠️ This email is already linked with: ${methods[0]}`);
-          }
-            
-        } catch (lookupError) {
-          console.error('❌ Failed to fetch sign-in methods:', lookupError);
-        }
-      } else {
-        console.error('❌ Facebook Sign-In Error:', error);
+  
+      const data = await res.json();
+  
+      if (data?.user) {
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.location.href = '/';
       }
+    } catch (error) {
+      console.error('❌ Facebook Sign-In Error:', error);
     }
   };
+  
 
   return (
     <AppTheme {...props}>
@@ -160,7 +142,7 @@ export default function SignIn(props) {
 
             <Typography sx={{ textAlign: 'center' }}>
               Don&apos;t have an account?{' '}
-              <Link to="/signup" variant="body2" sx={{ alignSelf: 'center' }}>
+              <Link href="/signup" variant="body2" sx={{ alignSelf: 'center' }}>
                 Sign up
               </Link>
             </Typography>

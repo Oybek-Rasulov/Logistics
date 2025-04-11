@@ -12,6 +12,8 @@ import Dashboard from "./components/admin/Dashboard";
 import Users from "./components/admin/Users";
 import Settings from "./components/admin/Settings";
 import { Navigate } from "react-router-dom";
+import AdminLogin from "./pages/AdminLogin";
+import ProtectedAdminRoute from "./components/Auth/ProtectedAdminRoute";
 
 export default function App() {
   return <BrowserRouter>
@@ -24,11 +26,18 @@ export default function App() {
       <Route path="/policy" element={<Policy />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/admin" element={<AdminLayout />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/adminLogin" element={<AdminLogin />} />
+      <Route
+        path="/admin"
+        element={
+          <ProtectedAdminRoute>
+            <AdminLayout />
+          </ProtectedAdminRoute>
+        }
+      />
       <Route path="/users" element={<Users />} />
       <Route path="/settings" element={<Settings />} />
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      {/* <Route path="*" element={<Navigate to="/dashboard" replace />} /> */}
 
     </Routes>
   </BrowserRouter>

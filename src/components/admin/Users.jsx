@@ -29,7 +29,7 @@ export default function Users({title, users}) {
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Role</TableCell>
-              <TableCell>Sign Up</TableCell>
+              {/* <TableCell>Sign Up</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -49,7 +49,7 @@ export default function Users({title, users}) {
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>User</TableCell>
-                <TableCell>{formattedDate}</TableCell> {/* Published Date */}
+                {/* <TableCell>{formattedDate}</TableCell> Published Date */}
               </TableRow>
             );
           })}

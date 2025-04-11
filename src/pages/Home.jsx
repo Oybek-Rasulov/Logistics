@@ -9,10 +9,12 @@ import Cards from '../components/ReusableComp/Cards';
 import Clients from '../components/ReusableComp/Clients';
 import Cargo from '../components/ReusableComp/Cargo';
 import Footer from '../components/ReusableComp/Footer';
+import ChatWidget from '../components/Chat/ChatWidget';
 import { useEffect } from 'react';
 
 
 export default function Home() {
+    const users = localStorage.getItem('user') || [];
     useEffect(() => {
         window.scrollTo(0, 0); // Scroll to top when the component mounts
       }, []);
@@ -32,5 +34,6 @@ export default function Home() {
         <Clients />
         <Cargo />
         <Footer />
+        {users.length > 0 && <ChatWidget />}
     </>
 } 
