@@ -45,16 +45,21 @@ export default function AdminChatPanel() {
 
   return (
     <div style={{ display: 'flex', height: '500px' }}>
-      <div style={{ width: '200px', borderRight: '1px solid #ddd', padding: '1rem' }}>
-        <h4>Users</h4>
+      <div style={{ width: '400px', borderRight: '1px solid #ddd', padding: '1rem' }}>
+        <h4 className='mb1'>Users</h4>
         <ul>
           {users.map(uid => (
             <li
               key={uid}
               style={{
+                backgroundColor: '#1C1F35',
+                color: '#fff',
+                borderRadius: '5px',
+                width: '350px',
                 padding: '8px',
                 cursor: 'pointer',
-                background: selectedUser === uid ? '#eee' : 'transparent'
+                marginBottom: '5px',
+                background: selectedUser === uid ? '#333' : 'transparent'
               }}
               onClick={() => setSelectedUser(uid)}
             >
@@ -64,8 +69,8 @@ export default function AdminChatPanel() {
         </ul>
       </div>
 
-      <div style={{ flex: 1, padding: '1rem' }}>
-        <div style={{ height: '400px', overflowY: 'auto', border: '1px solid #ccc', padding: '1rem' }}>
+      <div style={{ padding: '1rem', }}>
+        <div style={{ height: '400px', width: "600px", borderRadius: "10px", overflowY: 'auto', border: '1px solid #ccc', padding: '1rem' }}>
           {messages.map((msg, i) => (
             <div key={i} style={{ textAlign: msg.sender === 'admin' ? 'right' : 'left' }}>
               <b>{msg.sender}</b>: {msg.message}
@@ -81,9 +86,9 @@ export default function AdminChatPanel() {
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
             placeholder="Type your message"
-            style={{ width: '80%', padding: '0.5rem' }}
+            style={{ width: '80%', padding: '0.7rem', borderRadius: "5px", border: '1px solid #ccc' }}
           />
-          <button onClick={sendMessage} style={{ padding: '0.5rem 1rem', marginLeft: '0.5rem' }}>Send</button>
+          <button onClick={sendMessage} style={{ padding: '0.7rem 1rem', marginLeft: '0.5rem', borderRadius: '10px', border: '1px solid #ccc' }}>Send</button>
         </div>
       </div>
     </div>

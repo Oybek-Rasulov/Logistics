@@ -11,10 +11,12 @@ import { PageContainer } from '@toolpad/core/PageContainer';
 import Grid from '@mui/material/Grid';
 import Dashboard from '../components/admin/Dashboard';
 import Users from '../components/admin/Users';
-import Charts from '../components/admin/Charts';
 import AdminChatPanel from '../components/admin/AdminChatPanel';
 import { useState, useEffect } from "react";
 import Drivers from '../components/admin/Drivers';
+import Brokers from '../components/admin/Brokers';
+import Charts from '../components/admin/Charts';
+import ContactMessages from '../components/admin/ContactMessages';
 
 const NAVIGATION = [
   {
@@ -77,7 +79,9 @@ export default function DashboardLayoutBasic(props) {
 
   const [users, setUsers] = useState([]);
   const [drivers, setDrivers] = useState([]);
+  const [brokers, setBrokers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -109,6 +113,35 @@ export default function DashboardLayoutBasic(props) {
     fetchDrivers();
   }, []);
 
+  useEffect(() => {
+    const fetchBrokers = async () => {
+      try {
+        const res = await fetch('http://localhost:3001/api/brokers');
+        const data = await res.json();
+        setBrokers(data);
+      } catch (error) {
+        console.error('Failed to fetch brokers:', error);
+      }
+    };
+  
+    fetchBrokers();
+  }, []);
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/api/contact");
+        const data = await res.json();
+        setMessages(data);
+      } catch (error) {
+        console.error("Failed to fetch contact messages:", error);
+      }
+    };
+
+    fetchMessages();
+  }, []);
+  
+
 
   const router = useDemoRouter('/dashboard');
   const demoWindow = window ? window() : undefined;
@@ -128,14 +161,21 @@ export default function DashboardLayoutBasic(props) {
         <PageContainer>
           {router.pathname === '/dashboard' && (
             <Grid container spacing={1}>
-              <Grid xs={12} md={6} className="mb2">
+              <Grid xs={12}  className="mb2">
                 <Charts users={users} />
               </Grid>
-              <Grid xs={12} className="mb2">
+              <Grid xs={12}>
                 <Users title="Users" users={users} />
               </Grid>
               <Grid xs={12}>
                 <Drivers title="Drivers" drivers={drivers} />
+              </Grid>
+              <Grid xs={12}>
+                <Brokers title="Broker Applications" brokers={brokers} />
+              </Grid>
+              
+              <Grid xs={12}>
+                <ContactMessages title="Contact Submissions" messages={messages} />
               </Grid>
               <Grid xs={12}><Skeleton height={14} /></Grid>
             </Grid>

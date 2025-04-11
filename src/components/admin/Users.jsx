@@ -13,7 +13,6 @@ import {
 
 export default function Users({title, users}) {
   const mockUsers = users || []
-  console.log(mockUsers)
 
   return (
     <Box>

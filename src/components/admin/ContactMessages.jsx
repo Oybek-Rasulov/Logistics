@@ -10,8 +10,8 @@ import {
     TableContainer,
   } from '@mui/material';
   
-  export default function Drivers({ title, drivers }) {
-    const mockDrivers = drivers || [];
+  export default function ContactMessages({ title, messages }) {
+    const contactMessages = messages || [];
   
     return (
       <Box sx={{ marginBottom: '2rem'}}>
@@ -23,18 +23,18 @@ import {
           <Table>
             <TableHead sx={{ bgcolor: '#2F4F65' }}>
               <TableRow>
-                <TableCell>First Name</TableCell>
-                <TableCell>Last Name</TableCell>
-                <TableCell>Phone</TableCell>
+                <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
+                <TableCell>Phone</TableCell>
                 <TableCell>City</TableCell>
-                <TableCell>State</TableCell>
+                <TableCell>Message</TableCell>
+                <TableCell>Date</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {mockDrivers.map((driver, index) => {
-                const appliedAt = new Date(driver.created_at);
-                const formattedDate = appliedAt.toLocaleDateString('en-US', {
+              {contactMessages.map((msg, index) => {
+                const created = new Date(msg.created_at);
+                const formattedDate = created.toLocaleDateString('en-US', {
                   day: '2-digit',
                   month: 'long',
                   year: 'numeric',
@@ -42,12 +42,12 @@ import {
   
                 return (
                   <TableRow key={index}>
-                    <TableCell>{driver.first_name}</TableCell>
-                    <TableCell>{driver.last_name}</TableCell>
-                    <TableCell>{driver.phone_number}</TableCell>
-                    <TableCell>{driver.email}</TableCell>
-                    <TableCell>{driver.city}</TableCell>
-                    <TableCell>{driver.state}</TableCell>
+                    <TableCell>{msg.name}</TableCell>
+                    <TableCell>{msg.email}</TableCell>
+                    <TableCell>{msg.phone}</TableCell>
+                    <TableCell>{msg.city}</TableCell>
+                    <TableCell>{msg.message}</TableCell>
+                    <TableCell>{formattedDate}</TableCell>
                   </TableRow>
                 );
               })}

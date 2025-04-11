@@ -17,6 +17,7 @@ export default function Charts({ users }) {
 
   return (
     <BarChart
+      width={600}
       series={[{ data: userCountsByMonth, label: 'Users per Month' }]}
       height={300}
       xAxis={[{ data: monthLabels, scaleType: 'band' }]}
