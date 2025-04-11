@@ -86,7 +86,7 @@ export default function DashboardLayoutBasic(props) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/users');
+        const res = await fetch('https://logisticsbackend-b2dc.onrender.com/api/users');
         const data = await res.json();
         setUsers(data);
       } catch (error) {
@@ -102,7 +102,7 @@ export default function DashboardLayoutBasic(props) {
   useEffect(() => {
     const fetchDrivers = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/drivers');
+        const res = await fetch('https://logisticsbackend-b2dc.onrender.com/api/drivers');
         const data = await res.json();
         setDrivers(data);
       } catch (error) {
@@ -116,7 +116,7 @@ export default function DashboardLayoutBasic(props) {
   useEffect(() => {
     const fetchBrokers = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/brokers');
+        const res = await fetch('https://logisticsbackend-b2dc.onrender.com/api/brokers');
         const data = await res.json();
         setBrokers(data);
       } catch (error) {
@@ -130,7 +130,7 @@ export default function DashboardLayoutBasic(props) {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/contact");
+        const res = await fetch("https://logisticsbackend-b2dc.onrender.com/api/contact");
         const data = await res.json();
         setMessages(data);
       } catch (error) {

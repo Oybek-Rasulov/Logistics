@@ -34,7 +34,7 @@ export default function AdminLogin() {
     setError('');
 
     try {
-      const res = await axios.post('http://localhost:3001/api/admin/login', formData);
+      const res = await axios.post('https://logisticsbackend-b2dc.onrender.com/api/admin/login', formData);
       const data = res.data;
 
       if (data.message === 'success') {

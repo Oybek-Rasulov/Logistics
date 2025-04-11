@@ -9,7 +9,7 @@ export default function AdminChatPanel() {
 
   // Fetch all messages once to extract unique users
   useEffect(() => {
-    axios.get('http://localhost:3001/api/admin-chat')
+    axios.get('https://logisticsbackend-b2dc.onrender.com/api/admin-chat')
       .then(res => {
         const allMessages = res.data;
         const uniqueUsers = Array.from(new Set(allMessages.map(m => m.user_id)));
@@ -21,7 +21,7 @@ export default function AdminChatPanel() {
   // Fetch messages for selected user
   useEffect(() => {
     if (!selectedUser) return;
-    axios.get(`http://localhost:3001/api/admin-chat/${selectedUser}`)
+    axios.get(`https://logisticsbackend-b2dc.onrender.com/api/admin-chat/${selectedUser}`)
       .then(res => setMessages(res.data))
       .catch(err => console.error('Failed to fetch messages:', err));
   }, [selectedUser]);
@@ -30,13 +30,13 @@ export default function AdminChatPanel() {
     if (!messageInput.trim() || !selectedUser) return;
 
     try {
-      await axios.post('http://localhost:3001/api/admin-chat', {
+      await axios.post('https://logisticsbackend-b2dc.onrender.com/api/admin-chat', {
         user_id: selectedUser,
         sender: 'admin',
         message: messageInput,
       });
       setMessageInput('');
-      const res = await axios.get(`http://localhost:3001/api/admin-chat/${selectedUser}`);
+      const res = await axios.get(`https://logisticsbackend-b2dc.onrender.com/api/admin-chat/${selectedUser}`);
       setMessages(res.data);
     } catch (err) {
       console.error('Failed to send message:', err);

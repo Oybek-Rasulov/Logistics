@@ -74,7 +74,7 @@ export default function SignUp(props) {
       console.log('ID Token:', token);
 
       // Send token to backend
-      await fetch('http://localhost:3001/api/auth/firebase-login', {
+      await fetch('https://logisticsbackend-b2dc.onrender.com/api/auth/firebase-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
@@ -96,7 +96,7 @@ export default function SignUp(props) {
       console.log('🔑 ID Token:', token);
   
       // Optional: send token to your backend
-      await fetch('http://localhost:3001/api/auth/firebase-login', {
+      await fetch('https://logisticsbackend-b2dc.onrender.com/api/auth/firebase-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),

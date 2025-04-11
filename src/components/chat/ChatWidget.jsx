@@ -14,7 +14,7 @@ export default function ChatWidget() {
   const fetchMessages = async () => {
     if (!userId) return;
     try {
-      const res = await fetch(`http://localhost:3001/api/admin-chat/${userId}`);
+      const res = await fetch(`https://logisticsbackend-b2dc.onrender.com/api/admin-chat/${userId}`);
       const data = await res.json();
       setChat(
         data.map((msg) => ({
@@ -45,7 +45,7 @@ export default function ChatWidget() {
       setChat((prev) => [...prev, { sender: "user", text: message }]);
       setMessage("");
 
-      await fetch("http://localhost:3001/api/admin-chat", {
+      await fetch("https://logisticsbackend-b2dc.onrender.com/api/admin-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newMessage),

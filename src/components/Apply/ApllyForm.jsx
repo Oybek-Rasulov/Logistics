@@ -26,7 +26,7 @@ export default function ApplyForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3001/api/drivers', {
+      const res = await fetch('https://logisticsbackend-b2dc.onrender.com/api/drivers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
