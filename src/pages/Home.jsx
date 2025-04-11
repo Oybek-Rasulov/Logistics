@@ -34,6 +34,7 @@ export default function Home() {
         <Clients />
         <Cargo />
         <Footer />
+        {/* Users */}
         {users.length > 0 && <ChatWidget />}
     </>
 } 
