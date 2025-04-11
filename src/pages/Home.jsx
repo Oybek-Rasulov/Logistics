@@ -9,7 +9,7 @@ import Cards from '../components/ReusableComp/Cards';
 import Clients from '../components/ReusableComp/Clients';
 import Cargo from '../components/ReusableComp/Cargo';
 import Footer from '../components/ReusableComp/Footer';
-import ChatWidget from '../components/Chat/ChatWidget';
+import ChatWidget from '../components/chat/ChatWidget';
 import { useEffect } from 'react';
 
 
