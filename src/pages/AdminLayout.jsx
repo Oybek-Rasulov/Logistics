@@ -17,6 +17,8 @@ import Drivers from '../components/admin/Drivers';
 import Brokers from '../components/admin/Brokers';
 import Charts from '../components/admin/Charts';
 import ContactMessages from '../components/admin/ContactMessages';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Button } from '@mui/material';
 
 const NAVIGATION = [
   {
@@ -76,7 +78,7 @@ const Skeleton = styled('div')(({ theme, height }) => ({
 
 export default function DashboardLayoutBasic(props) {
   const { window } = props;
-
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [drivers, setDrivers] = useState([]);
   const [brokers, setBrokers] = useState([]);
@@ -140,8 +142,14 @@ export default function DashboardLayoutBasic(props) {
 
     fetchMessages();
   }, []);
-  
 
+  const handleLogout = () => {
+    // Remove admin data from localStorage
+    localStorage.removeItem('admin'); 
+
+    // Navigate to the homepage
+    navigate('/'); // You can replace '/' with the homepage route
+  };
 
   const router = useDemoRouter('/dashboard');
   const demoWindow = window ? window() : undefined;
@@ -184,6 +192,27 @@ export default function DashboardLayoutBasic(props) {
           {router.pathname === '/chat' && (
             <AdminChatPanel />
           )}
+           <Box sx={{ width: '250px', height: '100%', backgroundColor: '#f4f4f4' }}>
+              {/* Your Sidebar content here */}
+              <Button
+                fullWidth
+                variant="outlined"
+                onClick={handleLogout}
+                sx={{
+                  position: 'fixed',
+                  bottom: 16,
+                  left: 16,
+                  width: '100px',
+                  color: '#fff',
+                  backgroundColor: '#d32f2f',
+                  '&:hover': { backgroundColor: '#b71c1c' },
+                  marginTop: 'auto',
+
+                }}
+              >
+                Logout
+              </Button>
+            </Box>
         </PageContainer>
       </DashboardLayout>
     </AppProvider>

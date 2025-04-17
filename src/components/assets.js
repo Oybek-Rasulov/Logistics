@@ -50,6 +50,7 @@ import logisticsTruck from "../assets/icons/logistics-truck.png";
 import logicUser from "../assets/icons/logic-user.png";
 import logicDolly from "../assets/icons/logic-dolly.png";
 import logicDiagram from "../assets/icons/logic-diagram.png";
+import logout from "../assets/icons/logout.png";
 
 const assets = {
     logo,
@@ -102,6 +103,7 @@ const assets = {
     faq,
     apply,
     setup,
+    logout,
     
 }
 

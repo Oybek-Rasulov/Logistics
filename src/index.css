@@ -1415,7 +1415,7 @@ input::placeholder {
 }
 
 .chat-toggle {
-  background-color: var(--main-color);
+  background-color: var(--submit-btn);
   color: white;
   border: none;
   border-radius: 50%;
@@ -1486,6 +1486,11 @@ input::placeholder {
   padding: 5px 10px;
   margin-left: 5px;
   cursor: pointer;
+}
+
+.logout-btn {
+  background-color: var(--light-color);
+  border: none;
 }
 
 @media only screen and (max-width: 1025px) {
